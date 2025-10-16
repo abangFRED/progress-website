@@ -18,5 +18,22 @@ animateProgress(60);
 fetch('data/progress.json')
   .then(res => res.json())
   .then(data => {
-    // render data ke halaman
+    const main = document.querySelector('main');
+    data.forEach(item => {
+      const card = document.createElement('section');
+      card.className = 'progress-card';
+      card.innerHTML = `
+        <h2>Proyek: ${item.produk}</h2>
+        <div class="progress-bar">
+          <div class="progress" style="width: ${item.progress}%">${item.progress}%</div>
+        </div>
+        <p>Status: ${item.status}</p>
+        <div class="image-grid">
+          ${item.images.map(img => `<img src="images/${img}" alt="${item.produk}">`).join('')}
+        </div>
+      `;
+      main.appendChild(card);
+    });
   });
+
+
