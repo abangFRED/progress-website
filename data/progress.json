@@ -4,5 +4,12 @@
     "status": "Finishing",
     "progress": 60,
     "images": ["meja1.jpg", "meja2.jpg"]
+  },
+  {
+    "produk": "Meja Kayu Ulin",
+    "status": "Suplier",
+    "progress": 30,
+    "images": ["kursi1.jpg", "kursi2.jpg"]
   }
 ]
+
