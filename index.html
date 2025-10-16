@@ -11,28 +11,36 @@
     <h1>📦 Progress Produksi Mebel</h1>
   </header>
 
-  <main>
-    <section class="progress-card">
-      <h2>Proyek: Meja Kayu Jati</h2>
+  <main id="project-container">
+    <!-- Contoh proyek -->
+    <section class="progress-card" data-product="meja">
+      <h2>Meja Kayu Jati</h2>
       <div class="progress-bar">
         <div class="progress" style="width: 60%">60%</div>
       </div>
       <p>Status: Finishing</p>
+
+      <!-- Galeri disembunyikan awalnya -->
+      <div class="gallery hidden">
+        <div class="image-grid">
+          <img src="images/meja1.jpg" alt="Step 1">
+          <img src="images/meja2.jpg" alt="Step 2">
+        </div>
+      </div>
     </section>
-    <section class="progress-card">
-  <h2>Proyek: Lemari Pakaian</h2>
-  <div class="progress-bar">
-    <div class="progress" style="width: 25%">25%</div>
-  </div>
-  <p>Status: Pemotongan Bahan</p>
-</section>
 
+    <section class="progress-card" data-product="lemari">
+      <h2>Lemari Pakaian</h2>
+      <div class="progress-bar">
+        <div class="progress" style="width: 25%">25%</div>
+      </div>
+      <p>Status: Pemotongan Bahan</p>
 
-    <section class="gallery">
-      <h3>Foto Terbaru</h3>
-      <div class="image-grid">
-        <img src="images/meja1.jpg" alt="Step 1">
-        <img src="images/meja2.jpg" alt="Step 2">
+      <div class="gallery hidden">
+        <div class="image-grid">
+          <img src="images/lemari1.jpg" alt="Step 1">
+          <img src="images/lemari2.jpg" alt="Step 2">
+        </div>
       </div>
     </section>
   </main>
