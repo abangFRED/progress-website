@@ -1,19 +1,17 @@
-// Contoh animasi dinamis untuk update progress
-const progress = document.querySelector('.progress');
-let percent = 0;
+const cards = document.querySelectorAll('.progress-card');
 
-function animateProgress(target) {
-  const interval = setInterval(() => {
-    if (percent >= target) clearInterval(interval);
-    else {
-      percent++;
-      progress.style.width = percent + '%';
-      progress.textContent = percent + '%';
-    }
-  }, 30);
-}
+cards.forEach(card => {
+  card.addEventListener('click', () => {
+    // Tutup semua galeri lain
+    cards.forEach(c => {
+      if (c !== card) c.querySelector('.gallery').classList.add('hidden');
+    });
+    // Toggle galeri yang diklik
+    const gallery = card.querySelector('.gallery');
+    gallery.classList.toggle('hidden');
+  });
+});
 
-animateProgress(60);
 
 fetch('data/progress.json')
   .then(res => res.json())
@@ -35,5 +33,6 @@ fetch('data/progress.json')
       main.appendChild(card);
     });
   });
+
 
 
