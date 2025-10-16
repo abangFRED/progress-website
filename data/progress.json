@@ -1,0 +1,8 @@
+[
+  {
+    "produk": "Meja Kayu Jati",
+    "status": "Finishing",
+    "progress": 60,
+    "images": ["meja1.jpg", "meja2.jpg"]
+  }
+]
