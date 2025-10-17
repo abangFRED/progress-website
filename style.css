@@ -1,99 +1,72 @@
-/* Natural Kayu Style */
-:root {
-  --warna-bg: #f5efe0;
-  --warna-kartu: #e5d6c1;
-  --warna-teks: #4b3f35;
-  --warna-progress-bg: #d2b48c;
-  --warna-progress-fill: #8b6f47;
-  --warna-hover: #c7b299;
-}
-
 body {
-  font-family: 'Poppins', sans-serif;
-  background: var(--warna-bg);
-  color: var(--warna-teks);
+  font-family: 'Segoe UI', sans-serif;
+  background: #f2ede4;
+  color: #4a3c28;
   margin: 0;
   padding: 0;
-  text-align: center;
 }
 
 header {
-  background: var(--warna-progress-fill);
+  text-align: center;
+  background: #b38b59;
   color: white;
   padding: 1rem 0;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
-header h1 {
-  margin: 0;
-  font-size: 1.8rem;
+.produk-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px;
 }
 
-.progress-card {
-  background: var(--warna-kartu);
-  margin: 2rem auto;
-  padding: 1.5rem;
+.produk-card {
+  background: #fffaf3;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 20px;
+  transition: transform 0.3s ease;
+}
+
+.produk-card:hover {
+  transform: scale(1.03);
+}
+
+.progress-container {
+  background: #e8dcc3;
   border-radius: 12px;
-  width: 90%;
-  max-width: 400px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  transition: transform 0.2s ease;
+  height: 25px;
+  margin-top: 10px;
+  position: relative;
   cursor: pointer;
-}
-
-.progress-card:hover {
-  transform: scale(1.02);
-  background: var(--warna-hover);
+  overflow: hidden;
 }
 
 .progress-bar {
-  background: var(--warna-progress-bg);
-  border-radius: 8px;
-  overflow: hidden;
-  margin: 10px 0;
+  background: linear-gradient(90deg, #b38b59, #d6b98d);
+  height: 100%;
+  width: 0%;
+  border-radius: 12px;
+  transition: width 1s ease;
 }
 
-.progress {
-  background: var(--warna-progress-fill);
-  color: white;
-  text-align: right;
-  padding: 5px;
-  transition: width 0.6s ease;
+.progress-text {
+  position: absolute;
+  top: 3px;
+  left: 10px;
+  font-size: 14px;
+  font-weight: bold;
 }
 
-.gallery {
-  margin-top: 1rem;
-  animation: fadeIn 0.4s ease;
-}
-
-.image-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 10px;
-}
-
-.image-grid img {
-  width: 100%;
-  border-radius: 8px;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  opacity: 0.9;
-}
-
-.image-grid img:hover {
-  transform: scale(1.05);
-  opacity: 1;
-}
-
-.hidden {
+.gambar-container {
   display: none;
+  margin-top: 15px;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-5px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-footer {
-  padding: 1rem 0;
-  color: var(--warna-teks);
+.gambar-container img {
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
