@@ -59,14 +59,18 @@ header {
   font-weight: bold;
 }
 
-.gambar-container {
-  display: none;
-  margin-top: 15px;
+.gambar-container img {
+  width: 150px;           /* ukuran tampilan kecil */
+  height: 150px;          /* tetap kotak */
+  object-fit: cover;      /* potong gambar agar tetap proporsional */
+  border-radius: 12px;
+  margin: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
 }
 
-.gambar-container img {
-  width: 100%;
-  border-radius: 10px;
-  margin-top: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+.gambar-container img:hover {
+  transform: scale(1.05);
 }
+
+
