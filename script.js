@@ -1,5 +1,5 @@
 // Ganti URL ini dengan URL Web App dari Google Script kamu
-const SHEET_API_URL = "https://script.google.com/d/1xhDpBu-Vjio7OYNoh7tSe8nnu7-GHvKrZ_mu5ILbn8BISb7xlRNbqNjf/edit?usp=sharing";
+const SHEET_API_URL = "https://script.google.com/macros/s/AKfycbz8QNN4lk17JJDWQ6guHL12rFIaeiUXVFa32iTaLtbPV-wTfDlmlRnULzZJ6pYLdlQ/exec";
 
 const container = document.getElementById('project-container');
 
@@ -51,3 +51,4 @@ fetch(SHEET_API_URL)
     console.error("Gagal fetch data:", err);
     container.innerHTML = "<p style='color:red;'>Gagal memuat data.</p>";
   });
+
