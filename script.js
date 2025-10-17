@@ -1,54 +1,67 @@
-// Ganti URL ini dengan URL Web App dari Google Script kamu
 const SHEET_API_URL = "https://script.google.com/macros/s/AKfycbz8QNN4lk17JJDWQ6guHL12rFIaeiUXVFa32iTaLtbPV-wTfDlmlRnULzZJ6pYLdlQ/exec";
 
-const container = document.getElementById('project-container');
+async function ambilData() {
+  try {
+    const res = await fetch(SHEET_API_URL);
+    const data = await res.json();
+    tampilkanProduk(data);
+  } catch (err) {
+    console.error("Gagal mengambil data:", err);
+  }
+}
 
-fetch(SHEET_API_URL)
-  .then(response => response.json())
-  .then(data => {
-    data.forEach(item => {
-      // Asumsi kolom di sheet: Produk, Status, Progress, Gambar1, Gambar2, Gambar3, ...
-      const productName = item.Produk || "";
-      const status = item.Status || "";
-      const progress = parseInt(item.Progress) || 0;
-      const images = [item.Gambar1, item.Gambar2, item.Gambar3].filter(Boolean);
+function tampilkanProduk(data) {
+  const container = document.getElementById("produk-container");
+  container.innerHTML = "";
 
-      // Buat elemen
-      const card = document.createElement('section');
-      card.className = 'progress-card';
-      card.innerHTML = `
-        <h2>${productName}</h2>
-        <div class="progress-bar">
-          <div class="progress" style="width: ${progress}%">${progress}%</div>
-        </div>
-        <p>Status: ${status}</p>
-        <div class="gallery hidden">
-          <div class="image-grid">
-            ${images.map(img => `<img src="${img}" alt="${productName}">`).join('')}
-          </div>
-        </div>
-      `;
-      container.appendChild(card);
+  data.forEach(item => {
+    const card = document.createElement("div");
+    card.className = "produk-card";
+
+    const nama = document.createElement("h2");
+    nama.textContent = item.Produk;
+
+    const status = document.createElement("p");
+    status.textContent = `Status: ${item.Status}`;
+
+    const progressContainer = document.createElement("div");
+    progressContainer.className = "progress-container";
+
+    const progressBar = document.createElement("div");
+    progressBar.className = "progress-bar";
+    progressBar.style.width = item.Progress + "%";
+
+    const progressText = document.createElement("div");
+    progressText.className = "progress-text";
+    progressText.textContent = `${item.Progress}%`;
+
+    progressContainer.appendChild(progressBar);
+    progressContainer.appendChild(progressText);
+
+    // Gambar hanya muncul ketika progress bar diklik
+    const gambarContainer = document.createElement("div");
+    gambarContainer.className = "gambar-container";
+
+    [item.Gambar1, item.Gambar2, item.Gambar3].forEach(url => {
+      if (url && url.trim() !== "") {
+        const img = document.createElement("img");
+        img.src = url;
+        gambarContainer.appendChild(img);
+      }
     });
 
-    // Tambahkan behavior klik untuk toggle gallery
-    const cards = document.querySelectorAll('.progress-card');
-    cards.forEach(card => {
-      card.addEventListener('click', () => {
-        // tutup semua gallery lain
-        cards.forEach(c => {
-          if (c !== card) {
-            const gal = c.querySelector('.gallery');
-            if (gal) gal.classList.add('hidden');
-          }
-        });
-        const galThis = card.querySelector('.gallery');
-        if (galThis) galThis.classList.toggle('hidden');
-      });
+    progressContainer.addEventListener("click", () => {
+      const visible = gambarContainer.style.display === "block";
+      gambarContainer.style.display = visible ? "none" : "block";
     });
-  })
-  .catch(err => {
-    console.error("Gagal fetch data:", err);
-    container.innerHTML = "<p style='color:red;'>Gagal memuat data.</p>";
+
+    card.appendChild(nama);
+    card.appendChild(status);
+    card.appendChild(progressContainer);
+    card.appendChild(gambarContainer);
+
+    container.appendChild(card);
   });
+}
 
+ambilData();
